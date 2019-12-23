@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  get 'post/index' => 'post#index'
-  get 'post/new' => 'post#new'
-  post 'post/create' => 'post#create'
+  get 'users/new' => 'users#new'
+  post 'users/create' => 'users#create'
+  get 'users/index' => 'users#index'
+  get 'users/:id' => 'users#show'
+  get 'users/:id/edit' => 'users#edit'
+  post 'users/:id/update' => 'users#update'
+  post 'users/:id/destroy' => 'users#destroy'
+  
+
+  get 'posts/index' => 'posts#index'
+  get 'posts/new' => 'posts#new'
+  get 'posts/:id' => 'posts#show'
+  post 'posts/create' => 'posts#create'
+  get 'posts/:id/edit' => 'posts#edit'
+  post 'posts/:id/update' => 'posts#update'
+  post 'posts/:id/destroy' => 'posts#destroy'
 
   get '/' => 'home#top'
   get '/about' => 'home#about'

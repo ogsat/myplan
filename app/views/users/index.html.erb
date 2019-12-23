@@ -1,0 +1,10 @@
+<div class="main users-index">
+    <%= flash[:success] %>
+  <div class="container">
+    <% @users.each do |user| %>
+      <div class="users-index-item">
+        <%= link_to(user.name, "/users/#{user.id}") %>
+      </div>
+    <% end %>
+  </div>
+</div>
