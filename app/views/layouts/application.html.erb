@@ -10,5 +10,22 @@
 
   <body>
     <%= yield %>
+    
+    <li>
+    <%= link_to("ログイン","/login") %>
+    </li>
+    
+    <% if session[:user_id] %>
+    <li>
+      現在ログインしているユーザのid:
+      <%= session[:user_id] %>
+    </li>
+    <% else %>
+    <li>
+      <%= link_to("...","/about")  %>
+    </li>
+    
+    <% end %>
+    
   </body>
 </html>
