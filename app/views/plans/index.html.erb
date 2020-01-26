@@ -1,0 +1,17 @@
+<div class="main posts-index">
+  <div class="container">
+    <% @plans.each do |plan| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{plan.user.image_name}" %>">
+        </div>
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to("@"+plan.user.name, "/users/#{plan.user.id}") %>
+          </div>
+          <%= link_to(plan.plan_name, "/plans/#{plan.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

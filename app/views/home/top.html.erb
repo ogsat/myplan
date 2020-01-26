@@ -1,6 +1,15 @@
-<a href="/about">aboutへ</a>
-<a href="posts/index">投稿一覧ページへ</a>
-<a href="posts/new">新規投稿ページへ</a>
-<a href="users/new">会員登録</a>
-<a href="users/index">ユーザ一覧</a>
-<a href="login">ログイン</a>
+<div class="main top-main">
+  <div class="main top-main-mask">
+    <div class="top-message">
+    <br>
+    <h2>旅行・遊びのプランを立てて、</h2>
+    <h2>みんなで共有。</h2>
+    </div>
+        <% if @current_user %>
+          <%= link_to("プランを作成する", "/posts/index") %>
+        <% else %>
+          <%= link_to("プランを作成する", "/") %>
+        <% end %>
+  </div>
+</div>
+

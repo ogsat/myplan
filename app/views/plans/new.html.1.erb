@@ -1,0 +1,48 @@
+    
+    <div class="main posts-new">
+      <div class="container">
+        <h1 class="form-heading">プランを作成する</h1>
+      
+      <%= form_for @plan,:url => {:controller => :plans ,:action => :create} do |f| %>
+      <div class="form">
+      <div class="form-body">
+      <div class="field">
+        <%= f.label :プラン名 %><br>
+        <%= f.text_field :plan_name %>
+      </div>
+      
+      <tbody id='plan_post'>
+      <div class="field">
+        <%= f.label :posts, "プラン詳細" %><br />
+        <%= f.fields_for :posts , wrapper_tag: :div do |posts_form| %>
+          <%= posts_form.hidden_field :user_id, value: @current_user.id %>
+          <%= posts_form.label  :日付 %>
+          <%= posts_form.date_field :plan_date %><br />
+          <%= posts_form.label :到着時間 %>
+          <%= posts_form.time_field :arrival_time %><br />
+          <%= posts_form.label :地名 %>
+          <%= posts_form.text_field :place_name %><br />
+          <%= posts_form.label :やること %>
+          <%= posts_form.text_field :content %><br />
+        <% end %>
+         <%= f.add_nested_fields_link :posts, '--------追加--------', class: 'btn btn-primary', role: 'button'  %>
+        </div>
+        </tbody>
+          <% if @plan.errors.any? %>
+  <div id="error_explanation">
+  <ul>
+  <% @plan.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+  <% end %>
+  
+        <%= f.submit "作成" %>
+        </div>
+      <% end %>
+      </div>
+      
+      </div>
+    </div>
+

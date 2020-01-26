@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio1</title>
+    <title>Myplan</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-    <%= yield %>
     
-    <li>
-    <%= link_to("ログイン","/login") %>
-    </li>
     
-    <% if session[:user_id] %>
-    <li>
-      現在ログインしているユーザのid:
-      <%= session[:user_id] %>
-    </li>
-    <% else %>
-    <li>
-      <%= link_to("...","/about")  %>
-    </li>
-    
+    <header>
+      <div class="header-logo">
+        <% if @current_user %>
+          <%= link_to("Myplan", "/plans/index") %>
+        <% else %>
+          <%= link_to("Myplan", "/") %>
+        <% end %>
+      </div>
+      <ul class="header-menus">
+        <% if @current_user %>
+          <li>
+            <%= link_to("マイページ", "/users/#{@current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("投稿一覧", "/plans/index") %>
+          </li>
+          <li>
+            <%= link_to("プラン作成", "/plans/new") %>
+          </li>
+          <li>
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("Myplanとは", "/about") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:success] %>
+      <div class="flash">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="flash">
+        <%= flash[:error] %>
+      </div>
     <% end %>
     
+    
+    <%= yield %>
   </body>
 </html>

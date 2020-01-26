@@ -1,0 +1,50 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post-user-name">
+        <img src="<%= "/user_images/#{@user.image_name}"%>">
+        <%= link_to("@"+@user.name,"/users/#{@user.id}") %>
+      </div>
+      
+      <p>プラン名</p>
+      <p><%= @plan.plan_name %></p>
+        <% @posts.each do |post_detail| %>
+           <p>-------------------------------------</p>
+            <% if post_detail.plan_id == @plan.id %>
+            <p>日付</p>
+            <p><%= post_detail.plan_date %></p>
+          
+            <p>地名</p>
+            <p><%= post_detail.place_name %></p>
+          
+            <% if post_detail.arrival_time? %>
+            <p>到着予定時間</p>
+            <p><%= post_detail.arrival_time %></p>
+            <% end %>
+          
+            <% if post_detail.place_image? %>
+            <p><%= image_tag post_detail.place_image.url %></p>
+            <% end %>
+          
+            <% if post_detail.content? %>
+            <p>やること</p>
+            <p><%= post_detail.content %></p>
+            <% end %>
+        
+        <% end %>
+      <% end %>
+      
+      <div class="post-time">
+        <%= @plan.created_at %>
+      </div>
+      
+      
+      <% if @plan.user_id == @current_user.id %>
+      <div class="post-menus">
+        <%= link_to("編集", "/plans/#{@plan.id}/edit") %>
+        <%= link_to("削除", "/plans/#{@plan.id}/destroy", {method: "post"}) %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

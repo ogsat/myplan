@@ -1,0 +1,7 @@
+ja:
+ activerecord:
+ models:
+ plan:
+ attributes:
+ plan:
+ plan_name: プラン名

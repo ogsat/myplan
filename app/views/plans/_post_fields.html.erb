@@ -1,0 +1,16 @@
+<div class="nested-fields">
+          <%= f.hidden_field :user_id, value: @current_user.id %>
+          <br />
+          <%= f.label :posts, "プラン詳細" %><br />
+          <%= f.label  :日付 %>
+          <%= f.date_field :plan_date %><br /><br />
+          <%= f.label :到着時間 %>
+          <%= f.time_field :arrival_time %><br />
+          <%= f.label :地名 %>
+          <%= f.text_field :place_name %><br />
+          <%= f.label :イメージ画像 %>
+          <%= f.file_field :place_image %>
+          <%= f.label :やること %>
+          <%= f.text_area :content %><br />
+          <%= link_to_remove_association "削除", f %>
+</div>

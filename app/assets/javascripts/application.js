@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require nested_form_fields
 //= require jquery
+//= require cocoon
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
