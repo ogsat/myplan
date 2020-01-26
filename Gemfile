@@ -38,6 +38,8 @@ gem 'nested_form_fields'
 gem 'cocoon'
 gem 'rails-i18n'
 gem 'carrierwave'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

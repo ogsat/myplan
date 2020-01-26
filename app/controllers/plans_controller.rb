@@ -1,10 +1,12 @@
 class PlansController < ApplicationController
   before_action :authenticate_user
+  
+  PER = 6
 
   
   # 一覧画面
   def index
-    @plans = Plan.all.order(created_at: :desc)
+    @plans = Plan.page(params[:page]).per(PER).order(created_at: :desc)
   end
   
   
