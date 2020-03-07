@@ -1,16 +1,15 @@
+<!--ネストされた入力フォーム-->
 <div class="nested-fields">
           <%= f.hidden_field :user_id, value: @current_user.id %>
-          <br />
-          <%= f.label :posts, "プラン詳細" %><br />
+          <%= link_to_remove_association "×︎", f, {class: 'remove-plan-detail'}, id: 'remove-link',
+                  data: {
+                    association_insertion_node: '#remove-plan-detail',
+                    association_insertion_method: 'append'
+                  } %><br />
           <%= f.label  :日付 %>
-          <%= f.date_field :plan_date %><br /><br />
-          <%= f.label :到着時間 %>
-          <%= f.time_field :arrival_time %><br />
-          <%= f.label :地名 %>
-          <%= f.text_field :place_name %><br />
-          <%= f.label :イメージ画像 %>
-          <%= f.file_field :place_image %>
-          <%= f.label :やること %>
-          <%= f.text_area :content %><br />
-          <%= link_to_remove_association "削除", f %>
+          <%= f.date_field :plan_date, value: (f.object.plan_date || Time.now.strftime("%Y-%m-%d")) %><br /><br />
+          <%= f.label :到着予定時間 %>
+          <%= f.time_field :arrival_time, value: (f.object.arrival_time) %><br /><br />
+          <%= f.text_field :place_name,placeholder:"行先" %><br /><br />
+          <%= f.text_area :content,placeholder:"やること" %>
 </div>

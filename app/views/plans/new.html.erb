@@ -1,43 +1,41 @@
-    
-    <div class="main posts-new">
-      <div class="container">
-        <h1 class="form-heading">プランを作成する</h1>
-        
-        
-          　　<% if @plan.errors.any? %>
-                <div id="error_explanation">
-                  <ul>
-                  <% @plan.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                  <% end %>
-                  </ul>
-                </div>
-              <% end %>
-      
-          <%= form_for @plan,:url => {:controller => :plans ,:action => :create} do |f| %>
-          <div class="form">
-            <div class="form-body">
-              <div class="field">
-                <%= f.label :プラン名 %><br>
-                <%= f.text_field :plan_name %>
-              </div>
-      
+<!-- プラン作成画面   -->
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">プランを作成する</h1>
 
-              <div class="field">
-                <%= f.fields_for :posts do |posts_form| %>
-                <%= render 'post_fields', f: posts_form %>　
-                <% end %>
-                <div id=link>
-                <%= link_to_add_association "行先追加", f, :posts %><br/>
-                </div>
-              </div>
-          
-  
-              
-              <%= f.submit "作成" %>
-            </div>
-          <% end %>
-          </div>
-      </div>
+    <!--　エラーメッセージ　-->
+    <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
+    <% end %>
 
+    <!--　入力フォーム-->
+    <%= form_for @plan,:url => {:controller => :plans ,:action => :create} do |f| %>
+    <div class="form">
+      <div class="form-body">
+        <div class="field">
+          <%= f.label :プラン名, {class: 'plan-name'} %><br>
+          <%= f.text_field :plan_name %>
+        </div><br>
+
+        <!-- ネストされた入力フォームの呼び出し　_posts_fields.html.erb-->
+        <div class="field">
+          <%= f.label :プラン詳細, {class: 'plan-detail'} %>
+          <%= f.fields_for :posts do |posts_form| %>
+          <%= render 'post_fields', f: posts_form %>　
+          <% end %>
+          <div id=link>
+            <%= link_to_add_association "行先追加", f, :posts ,{class: 'btn-add'}%><br/>
+          </div>
+        </div>
+        <%= f.submit "完了" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

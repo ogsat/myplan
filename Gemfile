@@ -40,6 +40,7 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

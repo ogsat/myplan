@@ -3,7 +3,7 @@
   <head>
     <title>Myplan</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,7 +11,7 @@
 
   <body>
     
-    
+    <!--ヘッダー-->
     <header>
       <div class="header-logo">
         <% if @current_user %>
@@ -23,26 +23,26 @@
       <ul class="header-menus">
         <% if @current_user %>
           <li>
-            <%= link_to("マイページ", "/users/#{@current_user.id}") %>
-          </li>
-          <li>
-            <%= link_to("投稿一覧", "/plans/index") %>
-          </li>
-          <li>
             <%= link_to("プラン作成", "/plans/new") %>
           </li>
           <li>
-            <%= link_to("ユーザー一覧", "/users/index") %>
+            <%= link_to("マイページ", "/users/#{@current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("みんなのプランを見る", "/plans/index") %>
           </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
           </li>
         <% else %>
           <li>
-            <%= link_to("Myplanとは", "/about") %>
+            <%= link_to("Myplanとは","/about") %>
           </li>
           <li>
-            <%= link_to("新規登録", "/signup") %>
+            <%= link_to("みんなのプランを見る", "/plans/index") %>
+          </li>
+          <li>
+            <%= link_to("会員登録", "/signup") %>
           </li>
           <li>
             <%= link_to("ログイン", "/login") %>
@@ -51,6 +51,7 @@
       </ul>
     </header>
 
+    <!--flashメッセージ-->
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>

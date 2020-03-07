@@ -1,15 +1,18 @@
+<!--TOP画面-->
 <div class="main top-main">
   <div class="main top-main-mask">
-    <div class="top-message">
-    <br>
-    <h2>旅行・遊びのプランを立てて、</h2>
-    <h2>みんなで共有。</h2>
+    <div class="top-message"><br>
+      <h2>旅行・遊びのプランを立てて、<br>みんなで共有。</h2>
     </div>
-        <% if @current_user %>
-          <%= link_to("プランを作成する", "/posts/index") %>
-        <% else %>
-          <%= link_to("プランを作成する", "/") %>
-        <% end %>
+    <div class = "btn-top">
+      <!--ログインしてたらプラン作成画面へ-->
+      <% if @current_user %>
+      <%= link_to("計画を立てる", "/plans/new") %>
+      <% else %>
+      <%= link_to("計画を立てる", "/login") %>
+      <% end %>
+    </div>
   </div>
 </div>
+
 

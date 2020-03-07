@@ -47,6 +47,24 @@
   overflow: hidden;
 }
 
+.posts-show-layout {
+  float:left;
+  padding-right: 10px;
+  // box-sizing: border-box;
+  // width: 15%;
+}
+.posts-show-time {
+  float:left;
+  padding-right: 10px;
+}
+
+.posts-show-block {
+  border-left: thick solid #FF6666;
+  padding-left: 10px;
+  box-sizing: border-box;
+  // width: 85%;
+}
+
 .posts-show-item img {
   width: 60px;
   height: 60px;
@@ -70,6 +88,7 @@
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;
+
 }
 
 
@@ -98,6 +117,80 @@
   font-size: 14px;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.arrival_time{
+}
+
+.place-name{
+  
+}
+
+
+.plan-name-show{
+  text-align: center;
+  padding: 0.5em 1em;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #ffb03c, #ff708d);
+  color: #FFF;
+}
+
+.plan-name{
+  font-size: 26px;
+  color: #696969;
+}
+
+.plan-detail{
+  font-size: 26px;
+  color: #696969;
+}
+
+.remove-plan-detail{
+  font-size: 26px;
+  float: right;
+}
+
+.remove-plan-detail:hover{
+  font-size: 26px;
+  color: #FF6666;
+}
+
+.nested-fields{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background-color: #fef9fb;
+}
+
+.content{
+  position: relative;
+  padding: 20px;
+  background-color: #FFF0F5;
+  margin-bottom: 2em;
+  border-radius: 7px;
+  width:500px;
+}
+
+/* beforeで三角を表現 */
+.content::before{
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: -15px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #FFF0F5;
+  border-left: 15px solid transparent;
+}
+
+
+
 /* posts/new ================================ */
 .posts-new textarea {
   font-size: 20px;
@@ -110,4 +203,24 @@
 .posts-new textarea::-webkit-input-placeholder {
   font-size: 24px;
   opacity: 0.5;
+}
+
+
+.btn-add {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #F8A7A0;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  border: 1px #F8A7A0 solid;
+  border-radius: 20px;
+  transition: 0.4s ease;
+}
+
+.btn-add:hover {
+  color: #fff;
+  background: #F8A7A0;
 }

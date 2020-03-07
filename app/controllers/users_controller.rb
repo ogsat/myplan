@@ -3,22 +3,20 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update]}
  
+
   
-  def index
-    @users = User.all
-  end
-  
-  
+  PER = 6
   def show
     @user = User.find_by(id: params[:id])
+    # @user = Kaminari.paginate_array(@user).page(params[:page]).per(PER).order(created_at: :desc)
   end
   
-  
+  # ユーザー登録画面
   def new
     @user = User.new
   end
   
-  
+  # ユーザー登録
   def create
     @user = User.new(
       name: params[:name],
@@ -37,11 +35,12 @@ class UsersController < ApplicationController
     end
   end
   
-  
+  # ユーザー編集画面
   def edit
     @user = User.find_by(id: params[:id])
   end
   
+  # ユーザー情報更新
   def update
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
@@ -62,17 +61,21 @@ class UsersController < ApplicationController
     end
   end
   
+  # ユーザー情報削除
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
     redirect_to("/users/index")
   end
   
+  # ログイン画面
   def login_form
   end
   
+  # ログイン
   def login
     @user = User.find_by(email: params[:email])
+    # 入力値チェック
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
@@ -85,22 +88,19 @@ class UsersController < ApplicationController
     end
   end
   
+  # ログアウト
   def logout
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
     redirect_to("/login")
   end
   
+  # 権限チェック
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
       redirect_to("/plans/index")
     end
   end
-  
-  def likes
-    @user = User.find_by(id: params[:id])
-    @likes = Like.where(user_id: @user.id)
-  end
-  
+
 end
