@@ -25,7 +25,7 @@ https://my-plan.work/
   　 ・EC2  
   　 ・RDS  
  　  ・ELB  
-   　・Route53  
+ 　  ・Route53  
  　  ・ACM  
   　 ・Nginx,unicorn  
 
