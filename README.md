@@ -21,12 +21,12 @@ https://my-plan.work/
 
 ●インフラストラクチャー  
 　○　AWS  
-   　・VPC  
+　   ・VPC  
   　 ・EC2  
   　 ・RDS  
  　  ・ELB  
    　・Route53  
-   　・ACM  
+ 　  ・ACM  
   　 ・Nginx,unicorn  
 
 ■機能一覧  
