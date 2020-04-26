@@ -1,24 +1,39 @@
-# README
+■URL
+AWSを利用しwebに公開しています。
+https://my-plan.work/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+■サービス概要
+旅行、お出かけ、イベント等のスケジュール作成サービスです。
+作成後はURLで共有ができます。
 
-Things you may want to cover:
 
-* Ruby version
+■使用技術
+●フロントエンド
+　○　html
+　○　css
+　○　javascript
+　○　jquery
 
-* System dependencies
+●バックエンド
+　○　Ruby 2.6.0
+　○　Rails 5.0.7
+　○　MySQL 8.0.19
 
-* Configuration
+●インフラストラクチャー
+　○　AWS
+		VPC
+		EC2
+		RDS
+		ELB
+		Route53
+		ACM
+		Nginx,unicorn
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+■機能一覧
+・ログイン/ログアウト
+・ユーザー新規登録/編集/削除
+・マイページ
+・プランの新規投稿/編集/削除/一覧表示
+　ネストした入力フォーム
+　入力フォーム動的追加/削除
+　ページネーション
